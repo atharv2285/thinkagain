@@ -1,0 +1,150 @@
+/* Reset margins and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    font-family: 'Arial', sans-serif; /* Default font */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 20px 40px;
+    position: fixed; /* Fixed navbar */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 10; /* Stay above other content */
+}
+
+/* Logo Styling */
+.navbar .logo {
+    font-size: 50px;
+    font-family: 'Baskerville', serif;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar .logo .think {
+    font-weight: bold;
+}
+
+.navbar .logo .again {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px; /* Spacing between links */
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ddd; /* Hover effect */
+}
+
+/* Hero Image Section */
+.hero-image {
+    position: relative; /* Position relative for containing text */
+    margin-top: 60px; /* Prevent image from overlapping navbar */
+}
+
+.hero-img {
+    width: 100%; /* Fill screen horizontally */
+    height: 100vh; /* Fill viewport height */
+    object-fit: cover; /* Ensure the image scales properly */
+    display: block; /* Remove gaps below image */
+}
+
+.hero-text {
+    position: absolute; /* Position text over the image */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center */
+    text-align: center; /* Center text */
+    color: white; /* Text color */
+    font-family: 'Gilory', serif; /* Custom font for hero text */
+    font-size: 4rem; /* Larger font size */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.hero-text .italic {
+    font-style: italic;
+    color: #ff532e; /* Highlight "Present" in red */
+}
+
+/* Section Styling */
+.section {
+    padding: 100px 40px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-bottom: 2px solid #ff532e; /* Accent border */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Speaker Cards */
+.speaker-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.card {
+    background-color: #333; /* Card background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #ddd; /* Slightly lighter text */
+}
+
+/* Hover Effect for Speaker Cards */
+.card:hover {
+    transform: scale(1.1); /* Slightly enlarge card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Add stronger shadow */
+}
