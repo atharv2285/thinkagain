@@ -15,41 +15,35 @@ body, html {
     align-items: center;
     background-color: black;
     color: white;
-    padding: 20px 40px;
-    position: fixed; /* Fixed navbar */
+    padding: 20px 30px;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Full width */
-    z-index: 10; /* Stay above other content */
+    width: 100%;
+    z-index: 10;
 }
 
-/* Logo Styling */
 .navbar .logo {
-    font-size: 50px;
-    font-family: 'Baskerville', serif;
+    font-size: 2.5rem;
+    font-family: 'Baskerville', serif; /* Baskerville for elegant serif styling */
     font-weight: bold;
     color: white;
-}
-
-.navbar .logo .think {
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .navbar .logo .again {
-    font-style: italic;
-    font-weight: bold;
+    font-style: italic; /* Italic styling for "Again" */
+    color: #ff532e; /* Orange color for distinction */
 }
 
-/* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 40px; /* Spacing between links */
+    gap: 30px;
     margin: 0;
-}
-
-.nav-links li {
-    display: inline;
+    padding: 0;
 }
 
 .nav-links a {
@@ -60,38 +54,45 @@ body, html {
 }
 
 .nav-links a:hover {
-    color: #ddd; /* Hover effect */
+    color: #ddd;
+}
+
+/* Hamburger menu icon */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
 }
 
 /* Hero Image Section */
 .hero-image {
-    position: relative; /* Position relative for containing text */
-    margin-top: 60px; /* Prevent image from overlapping navbar */
+    position: relative;
+    margin-top: 60px;
 }
 
 .hero-img {
-    width: 100%; /* Fill screen horizontally */
-    height: 100vh; /* Fill viewport height */
-    object-fit: cover; /* Ensure the image scales properly */
-    display: block; /* Remove gaps below image */
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
 }
 
+/* Hero Text */
 .hero-text {
-    position: absolute; /* Position text over the image */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust position to truly center */
-    text-align: center; /* Center text */
-    color: white; /* Text color */
-    font-family: 'Gilory', serif; /* Custom font for hero text */
-    font-size: 4rem; /* Larger font size */
-    white-space: nowrap; /* Prevent line breaks */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 4rem; /* Adjusted to fit on one line */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .hero-text .italic {
     font-style: italic;
-    color: #ff532e; /* Highlight "Present" in red */
+    color: #ff532e;
 }
+
 
 /* Section Styling */
 .section {
@@ -99,7 +100,9 @@ body, html {
     text-align: center;
 }
 
-.section h2 {
+/* About, Speakers, News, and Media Headings and Text Styling */
+h2 {
+    font-family: 'Baskerville', serif; /* Elegant serif font for uniformity */
     font-size: 3rem;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -107,44 +110,94 @@ body, html {
     border-bottom: 2px solid #ff532e; /* Accent border */
     display: inline-block;
     padding-bottom: 10px;
+    font-family: 'Baskerville', serif; /* Elegant serif font for uniformity */
 }
+
+p {
+    font-size: 1.2rem;
+    font-family: 'Arial', sans-serif;
+    color: #ddd; /* Light gray text */
+    line-height: 1.6;
+}
+
 
 /* Speaker Cards */
 .speaker-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
     margin-top: 40px;
 }
 
 .card {
-    background-color: #333; /* Card background */
-    padding: 20px;
+    position: relative; /* Allow absolute positioning of text */
+    background-color: #333;
+    width: 300px; /* Fixed width */
+    height: 350px; /* Adjusted height */
+    padding: 5px;
     border-radius: 10px;
     text-align: center;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Ensure content doesn't overflow the card */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Enlarge slightly */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .card img {
     width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    height: 100%;
+    object-fit: cover; /* Make the image fill the entire card */
+    border-radius: 1px;
+    position: absolute; /* Position image absolutely */
+    top: 0;
+    left: 0;
+    z-index: 0; /* Ensure the image stays behind the text */
 }
 
 .card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    position: absolute;
+    bottom: 15%; /* Adjusted position to leave space for the description */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    margin: 0;
+    color: white;
+    font-size: 1.3rem; /* Smaller text */
+    white-space: nowrap; /* Prevent name from wrapping */
 }
 
 .card p {
+    position: absolute;
+    bottom: 7%; /* Adjusted position to leave space below the name */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    margin: 0;
+    color: white;
     font-size: 1rem;
-    color: #ddd; /* Slightly lighter text */
+    white-space: nowrap;
+    line-height: 1.4; /* Improved readability */
 }
 
-/* Hover Effect for Speaker Cards */
-.card:hover {
-    transform: scale(1.1); /* Slightly enlarge card */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Add stronger shadow */
+@media (max-width: 768px) {
+    .speaker-cards {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 cards per row */
+    }
 }
+
+@media (max-width: 480px) {
+    .speaker-cards {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 cards per row */
+    }
+    .hero-text {
+        font-size: 2rem;
+    }
+}
+
+
