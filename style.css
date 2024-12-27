@@ -174,7 +174,7 @@ p {
 
 .card p {
     position: absolute;
-    bottom: 7%; /* Adjusted position to leave space below the name */
+    bottom: 5%; /* Adjusted position to leave space below the name */
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
