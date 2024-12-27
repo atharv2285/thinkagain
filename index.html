@@ -4,7 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Think Again Conclave</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset margins and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Black background */
+            color: white; /* White text */
+            font-family: 'Arial', sans-serif; /* Default font */
+            overflow-x: hidden; /* Disable horizontal scrolling */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: white;
+            padding: 20px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            font-size: 2.5rem;
+            font-family: 'Baskerville', serif; /* Baskerville for elegant serif styling */
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .navbar .logo .again {
+            font-style: italic; /* Italic styling for "Again" */
+            color: #ff532e; /* Orange color for distinction */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ddd;
+        }
+
+        /* Hamburger menu icon */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* Hero Text */
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 4rem; /* Adjusted to fit on one line */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        .hero-text .italic {
+            font-style: italic;
+            color: #ff532e;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        /* About, Speakers, News, and Media Headings and Text Styling */
+        h2 {
+            font-size: 2.5rem;
+            font-family: 'Baskerville', serif; /* Elegant serif font for uniformity */
+            font-weight: bold;
+            color: #ff532e; /* Orange color for headings */
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            font-family: 'Arial', sans-serif;
+            color: #ddd; /* Light gray text */
+            line-height: 1.6;
+        }
+
+        /* Speaker Cards */
+        .speaker-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            position: relative; /* Allow absolute positioning of text */
+            background-color: #333;
+            width: 300px; /* Fixed width */
+            height: 350px; /* Adjusted height */
+            padding: 5px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Ensure content doesn't overflow the card */
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Enlarge slightly */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Make the image fill the entire card */
+            border-radius: 1px;
+            position: absolute; /* Position image absolutely */
+            top: 0;
+            left: 0;
+            z-index: 0; /* Ensure the image stays behind the text */
+        }
+
+        .card h3 {
+            position: absolute;
+            bottom: 15%; /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            margin: 0;
+            color: white;
+            font-size: 1.3rem; /* Smaller text */
+            white-space: nowrap; /* Prevent name from wrapping */
+        }
+
+        .card p {
+            position: absolute;
+            bottom: 10%; /* Adjusted position to be slightly below the name */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            margin: 0;
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.4; /* Improved readability */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .speaker-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .speaker-cards {
+                grid-template-columns: 1fr;
+            }
+            .hero-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -18,6 +215,9 @@
             <li><a href="#news">News</a></li>
             <li><a href="#media">Media</a></li>
         </ul>
+        <div class="menu-icon" id="menu-icon">
+            &#9776;
+        </div>
     </nav>
 
     <!-- Hero Image Section -->
@@ -38,20 +238,40 @@
     <section id="speakers" class="section">
         <h2>Speakers</h2>
         <div class="speaker-cards">
+            <!-- Speaker 1 -->
             <div class="card">
-                <img src="src/speaker1.jpg" alt="Speaker 1">
-                <h3>Speaker 1</h3>
-                <p>Topic: Innovation in Technology</p>
+                <img src="src/Archer.jpg" alt="Jeffrey Archer" class="speaker-image">
+                <h3>JEFFREY ARCHER</h3>
+                <p>Bestselling Author & Storyteller</p>
             </div>
+
+            <!-- Speaker 2 -->
             <div class="card">
-                <img src="src/speaker2.jpg" alt="Speaker 2">
-                <h3>Speaker 2</h3>
-                <p>Topic: Sustainability for the Future</p>
+                <img src="src/henry-throop-modified.jpeg" alt="Henry Throop" class="speaker-image">
+                <h3>HENRY THROOP</h3>
+                <p>Planetary Scientist & Astronomer</p>
             </div>
+
+            <!-- Speaker 3 -->
             <div class="card">
-                <img src="src/speaker3.jpg" alt="Speaker 3">
-                <h3>Speaker 3</h3>
-                <p>Topic: Entrepreneurship and Growth</p>
+                <img src="src/APJ.jpg" alt="APJ Abdul Kalam" class="speaker-image">
+                <h3>DR. APJ ABDUL KALAM</h3>
+                <p>Former President of India </p>
+            </div>
+
+            <!-- Speaker 4 -->
+            <div class="card">
+                <img src="src/stallman.jpeg" alt="Richard Stallman" class="speaker-image">
+                <h3>RICHARD STALLMAN</h3>
+                <p>Free Software Movement</p>
+            </div>
+
+            <!-- Speaker 5 -->
+            <div class="card">
+                <img src="src/Jimmy wales.jpg" alt="Jimmy Wales" class="speaker-image">
+                <h3>JIMMY WALES</h3>
+                <p>Co-founder of Wikipedia</p>
+      
             </div>
         </div>
     </section>
@@ -67,5 +287,13 @@
         <h2>Media</h2>
         <p>Explore photos, videos, and other media from past conclaves.</p>
     </section>
+
+    <script>
+        // Toggle the mobile menu
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+        });
+    </script>
 </body>
 </html>
